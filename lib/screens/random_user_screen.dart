@@ -14,8 +14,10 @@ class RandomUserScreen extends StatefulWidget {
 class _RandomUserScreenState extends State<RandomUserScreen> {
   @override
   void initState() {
-    Provider.of<RandomUserGetProvider>(context, listen: false)
-        .fetchData(userCount: 20);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      Provider.of<RandomUserGetProvider>(context, listen: false)
+          .fetchData(userCount: 20);
+    });
     super.initState();
   }
 
